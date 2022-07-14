@@ -60,7 +60,7 @@ def helper(letters, x, y, new_word, i_number, result, count):
 	global word_dict
 	if len(new_word) >= 4:										# Only vocabulary more than 4 letters
 		if new_word[0] <= 'm':									# To short searching time, searching 'a' to 'm'
-			if new_word[0] in word_dict['part1']:				# If letter is in part1 dictionary´s "key" (key-value)
+			if new_word[0] in word_dict['part1']:						# If letter is in part1 dictionary´s "key" (key-value)
 				# if new_word is in new_word[0]´s "value" list (key-value)
 				if new_word in word_dict['part1'][new_word[0]] and new_word not in result:
 					result.append(new_word)
@@ -77,17 +77,17 @@ def helper(letters, x, y, new_word, i_number, result, count):
 	if has_prefix(new_word):
 		for i in range(-1, 2, 1):							# (start, end, step)to find starting letter´s neighbor letter
 			for j in range(-1, 2, 1):
-				l_index = x + i								# Alphabet in list´s index
-				s_index = y + j								# Alphabet is sting´s index
-				if 0 <= l_index < len(letters):				# List len
-					if 0 <= s_index < len(letters[x]):		# String len
+				l_index = x + i							# Alphabet in list´s index
+				s_index = y + j							# Alphabet is sting´s index
+				if 0 <= l_index < len(letters):					# List len
+					if 0 <= s_index < len(letters[x]):			# String len
 						ch = letters[l_index][s_index]
-						index_inf = (l_index, s_index)  	# Get ch´s index (is Tuple)
+						index_inf = (l_index, s_index)  		# Get ch´s index (is Tuple)
 						if index_inf in i_number:			# if ch´s index exist in i_number list, meaning duplicated alphabet
 							pass
 						else:
 							# choose
-							new_word += ch					# add new alphabet to new_word string
+							new_word += ch				# add new alphabet to new_word string
 							i_number.append(index_inf)		# add new alphabet´s index to i_number list
 							# explore
 							helper(letters, l_index, s_index, new_word, i_number, result, count)
@@ -103,19 +103,19 @@ def input_letters():
 	Input alphabets: fycl, iomg, oril, hjhu, between alphabets shall be separated by space
 	:return: list type, list of alphabets inputted without space between alphabets
 	"""
-	letters_list = []												# To store input alphabets
-	for i in range(1, 5):											# Input letters, total 4 rows strings letters
+	letters_list = []										# To store input alphabets
+	for i in range(1, 5):										# Input letters, total 4 rows strings letters
 		while True:
-			s = input(str(i) + ' row of letters: ')					# i is index of row
+			s = input(str(i) + ' row of letters: ')						# i is index of row
 
 			illegal = False
 			for j in range(1, len(s), 2):							# j is space´s index 1, 3, 5,...
-				if s[j] != " ":										# If has space between letters
+				if s[j] != " ":								# If has space between letters
 					print('Illegal input!')
 					illegal = True
 					break
 
-			if not illegal:											# User input alphabets with space
+			if not illegal:									# User input alphabets with space
 				n_s = ""
 				for j in range(len(s)):
 					if s[j].isalpha():
@@ -135,7 +135,7 @@ def read_dictionary():
 	with open(FILE, 'r') as f:
 		for word in f:
 			word = word.strip()
-			if word[0] <= 'm':											# word_dict divided into 2 keys: part1 and part2
+			if word[0] <= 'm':								# word_dict divided into 2 keys: part1 and part2
 				if word[0] not in word_dict['part1']:					# part1 is a dictionary, word[0] is its key
 					word_dict['part1'][word[0]] = [word]				# part1 divided into "a" to "m" keys to store words
 				else:
@@ -154,7 +154,7 @@ def has_prefix(sub_s):
 	"""
 	global word_dict
 	if sub_s[0] <= 'm':
-		if sub_s[0] in word_dict['part1']:								# sub_[0] is key of dictionary 'part1'
+		if sub_s[0] in word_dict['part1']:							# sub_[0] is key of dictionary 'part1'
 			for word in word_dict['part1'][sub_s[0]]:					# word is 'value' in dictionary 'part1'
 				if word.startswith(sub_s):
 					return True
