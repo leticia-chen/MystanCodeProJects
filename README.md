@@ -7,7 +7,7 @@ Watch my *[DEMO VIDEOS!](https://drive.google.com/drive/folders/15PBttbH52LC6yeT
 ## Project Source Codes:
 * [Hangman Game](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/Hangman_Game/hangman_Game.py)
   * python semantics & syntax
-* [Weather Master]
+* [Weather Master](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/Weather_Master/Weather_Master.py)
   * python semantics & syntax
 * [MyPhotoshop](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/MyPhotoshop/MyPhotoshop.py)
   * image processing
