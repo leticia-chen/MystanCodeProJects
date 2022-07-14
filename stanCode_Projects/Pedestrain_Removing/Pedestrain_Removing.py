@@ -44,14 +44,14 @@ def get_average(pixels):
                         (returns in order: [red, green, blue])
     """
     # Pixels = [p1, p2, p3,...]
-    t_r = 0                             # sum of red color
-    t_g = 0                             # sum of green color
-    t_b = 0                             # sum of blue color
-    for i in range(len(pixels)):        # Run every pixel of list
+    t_r = 0                                 # sum of red color
+    t_g = 0                                 # sum of green color
+    t_b = 0                                 # sum of blue color
+    for i in range(len(pixels)):            # Run every pixel of list
         t_r += pixels[i].red
         t_g += pixels[i].green
         t_b += pixels[i].blue
-    avg_r = t_r//(len(pixels))            # Get average of every color
+    avg_r = t_r//(len(pixels))              # Get average of every color
     avg_g = t_g//(len(pixels))
     avg_b = t_b//(len(pixels))
 
@@ -105,12 +105,12 @@ def solve(images):
     # images = [SimpleImage('156-500.jpg'),...]
     for x in range(width):
         for y in range(height):
-            pixels = []                             # List to get pixels at the same position form images
+            pixels = []                                 # List to get pixels at the same position form images
             for image in images:
                 pixel = image.get_pixel(x, y)
-                pixels.append(pixel)                # If there are 3 images, will have 3 pixels at the same position
+                pixels.append(pixel)                    # If there are 3 images, will have 3 pixels at the same position
 
-            final_pixel = get_best_pixel(pixels)    # After get pixels(from 3 images) in one point(x,y), find the best
+            final_pixel = get_best_pixel(pixels)        # After get pixels(from 3 images) in one point(x,y), find the best
 
             # To start forming new picture without person, animal...
             new_pixel = result.get_pixel(x, y)
