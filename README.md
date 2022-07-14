@@ -11,7 +11,7 @@ Watch my *[DEMO VIDEOS!](https://drive.google.com/drive/folders/15PBttbH52LC6yeT
   * python semantics & syntax
 * [MyPhotoshop](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/MyPhotoshop/MyPhotoshop.py)
   * image processing
-* [Pedestrian Removing Application]
+* [Pedestrian Removing Application](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/Pedestrain_Removing/Pedestrain_Removing.py)
   * image processing
 * [Breakout Game](https://github.com/040360/MystanCodeProJects/blob/main/stanCode_Projects/Breakout_Game/breakout_Game.py)
   * animation & game designing
