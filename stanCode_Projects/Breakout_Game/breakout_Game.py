@@ -25,7 +25,7 @@ def main():
     count = 0
     while count < NUM_LIVES:
         pause(FRAME_RATE)
-        if breakout.total_bricks == 0:      # If breakout all bricks, you win
+        if breakout.total_bricks == 0:                          # If breakout all bricks, you win
             break
         # Start to play game
         if breakout.start_game:
