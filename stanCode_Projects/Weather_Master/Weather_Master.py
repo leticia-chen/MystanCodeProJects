@@ -22,42 +22,58 @@ def main():
 	"""
 
 	print('StanCode \"Weather Master 4.0\"!')
-	data = int(input('Next Temperature: (or ' + str(QUIT) + ' to quit)? '))
+	prompt = f'Next Temperature: (or {QUIT} to quit)? '
+
+	while True:
+		try:
+			data = int(input(prompt))
+			break
+		except ValueError:
+			print('Invalid input. Please enter a valid integer.')
+
 	# This is the fist data inputted
 	if data == QUIT:
 		print('No temperatures were entered')
 	else:
-		# The first data is highest, lowest and cool, because only one data
-		highest = data
-		lowest = data
-		cool = data
-		if cool < 16:
-			cool = 1
-		else:
-			cool = 0
-	# Started to compare data will be bigger or smaller then fist data
+		# Initialize values with the first data input
+		highest = lowest = data
+		cool = 0
+		if data < 16:
+			cool += 1
 		total = data
-		n = 1				# Counter to count how many data inputted
+		# Counter to count how many data inputted
+		count = 1
+
 		while True:
-			data = int(input('Next Temperature: (or ' + str(QUIT) + ' to quit)? '))
+			try:
+				data = int(input(prompt))
+			except ValueError:
+				print('Invalid input. Please enter a valid integer.')
+				continue
+
 			if data == QUIT:
 				break
-			n += 1					
 			if data > highest:
 				highest = data
 			if data < lowest:
 				lowest = data
 			if data < 16:
 				cool += 1
+
 			total += data
+			count += 1
 
 		print('Highest Temperature = ' + str(highest))
 		print('Lowest Temperature = ' + str(lowest))
 
-		average = (total/n)
+		average = (total/count)
 		print('Average = ' + str(average))
 
 		print(str(cool) + ' cold day(s)')
+
+
+if __name__ == "__main__":
+	main()
 
 
 if __name__ == "__main__":
