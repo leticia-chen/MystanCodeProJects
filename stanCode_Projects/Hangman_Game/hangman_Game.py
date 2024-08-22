@@ -22,53 +22,56 @@ def main():
     Program will give user a word and each letter will be in dashed,
     User has to guess which letters they are in limited times.
     """
+
+    word = random_word()
+    dashed = word_in_dashed(word)
+    word_guess(word, dashed)
+
+
+def word_in_dashed(word):
     # The vocabulary will be shown by dash before guess.
-    answer = random_word()
-    dashed = ""
-    for i in range(len(answer)):
+    dashed = ''
+    for i in range(len(word)):
         dashed += '-'
     print('The word looks like: ' + dashed)
     print('You have ' + str(N_TURNS) + ' guesses left')
+    return dashed
 
-    x = N_TURNS
+
+def word_guess(w, d):
+    
+    count = N_TURNS
     while True:
-        # Guess all letters
-        if dashed == answer:
-            print('You are win!')
-            print('The word was: ' + answer)
-            break
-
-        # Game over and did not guess all letters
-        elif x == 0:
-            print('You are completely hung :(')
-            print('The word was: ' + answer)
-            break
-
+        your_guess = input('Your guess: ').upper()
+        if not your_guess.isalpha() or len(your_guess) != 1:
+            print('Illegal format.')
         else:
-            # When typing letters in illegal format
-            your_guess = input('Your guess: ')
-            if not your_guess.isalpha() or len(your_guess) != 1:
-                print('Illegal format.')
-
-            else:
-                your_guess = your_guess.upper()
-                ch = ''
-                if your_guess in answer:
-                    print('You are correct!')
-                    for i in range(len(answer)):
-                        if your_guess == answer[i]:
-                            ch += answer[i]
-                        else:
-                            ch += dashed[i]             # dashed string will replace ch string to keep letters guessed
-                    dashed = ch
-                    print('The word looks like: ' + dashed)
-                    print('You have ' + str(x) + ' guesses left')
+            answer = ''
+            if your_guess in w:
+                for j in range(len(d)):
+                    if w[j] == your_guess:
+                        answer += your_guess
+                    else:
+                        answer += d[j]
+                d = answer
+                print('You are correct!')
+                if w == d:
+                    print('You are win!')
+                    print('The word was: ' + d)
+                    break
                 else:
-                    # if not guessing letter will lose um chance
-                    x -= 1
-                    print('There is no \'' + your_guess + '\' in word.')
-                    print('The word looks like: ' + dashed)
-                    print('You have ' + str(x) + ' guesses left')
+                    print('The word looks like: ' + d)
+                    print('You have ' + str(count) + ' guesses left')
+            else:
+                count -= 1
+                print('There is no \'' + your_guess + '\' in word.')
+                if count == 0:
+                    print('You are completely hung :(')
+                    print('The word was: ' + w)
+                    break
+                else:
+                    print('The word looks like: ' + d)
+                    print('You have ' + str(count) + ' guesses left')
 
 
 def random_word():
